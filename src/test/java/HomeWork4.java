@@ -20,7 +20,7 @@ import static com.codeborne.selenide.Selenide.*;
 public class HomeWork4 {
 
     @BeforeAll
-    static void settingBrowse() {
+    static void prepareEnvironment() {
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://github.com";
         Configuration.pageLoadStrategy = "eager";
