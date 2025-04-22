@@ -25,16 +25,14 @@ public class HomeWork5 {
         $(byText("Solutions")).hover();
         $(byTagAndText("a", "Enterprises")).click();
         $("#hero-section-brand-heading").shouldHave(text("The AI-powered developer platform"));
+        Selenide.closeWebDriver();
     }
 
     @Test
-    void dragAndDropTest() {
+    void dragAndDropWithActionTest() {
         open("https://the-internet.herokuapp.com/drag_and_drop");
         $("#column-a").shouldHave(text("A"));
         $("#column-b").shouldHave(text("B"));
-        $("#column-a").dragAndDrop(DragAndDropOptions.to($("#column-b")));
-        $("#column-a").shouldHave(text("B"));
-        $("#column-b").shouldHave(text("A"));
 
         Selenide.actions()
                 .clickAndHold($("#column-a"))
@@ -42,7 +40,19 @@ public class HomeWork5 {
                 .release()
                 .perform();
 
+        $("#column-a").shouldHave(text("B"));
+        $("#column-b").shouldHave(text("A"));
+        Selenide.closeWebDriver();
+    }
+
+    @Test
+    void dragAndDropWithOutActionTest() {
+        open("https://the-internet.herokuapp.com/drag_and_drop");
         $("#column-a").shouldHave(text("A"));
         $("#column-b").shouldHave(text("B"));
+        $("#column-a").dragAndDrop(DragAndDropOptions.to($("#column-b")));
+        $("#column-a").shouldHave(text("B"));
+        $("#column-b").shouldHave(text("A"));
+        Selenide.closeWebDriver();
     }
 }
