@@ -6,11 +6,9 @@ import org.junit.jupiter.api.Test;
 import java.io.File;
 import java.time.Duration;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 
 
@@ -26,7 +24,7 @@ public class HomeWork5 {
         open("https://github.com");
         $(byText("Solutions")).hover();
         $(byTagAndText("a", "Enterprises")).click();
-        $(byTagAndText("h1", "The AI-powered developer platform"));
+        $("#hero-section-brand-heading").shouldHave(text("The AI-powered developer platform"));
     }
 
     @Test
